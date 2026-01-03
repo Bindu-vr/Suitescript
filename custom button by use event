@@ -1,0 +1,17 @@
+/**
+ * @NScriptType UserEventScript
+ */
+define([], function () {
+
+    function beforeLoad(context) {
+        if (context.type === context.UserEventType.VIEW) {
+            context.form.addButton({
+                id: 'custpage_btn',
+                label: 'Custom Action',
+                functionName: 'onClickAction'
+            });
+        }
+    }
+
+    return { beforeLoad: beforeLoad };
+});
