@@ -1,0 +1,15 @@
+function validateLine(context) {
+    if (context.sublistId !== 'item') return true;
+
+    var rec = context.currentRecord;
+    var item = rec.getCurrentSublistValue({ sublistId: 'item', fieldId: 'item' });
+    var count = rec.getLineCount({ sublistId: 'item' });
+
+    for (var i = 0; i < count; i++) {
+        if (rec.getSublistValue({ sublistId: 'item', fieldId: 'item', line: i }) === item) {
+            alert('Duplicate item not allowed');
+            return false;
+        }
+    }
+    return true;
+}
