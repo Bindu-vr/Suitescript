@@ -1,0 +1,15 @@
+/**
+ * @NApiVersion 2.x
+ * @NScriptType ClientScript
+ */
+define(['N/runtime'], function (runtime) {
+
+    function pageInit(context) {
+        var role = runtime.getCurrentUser().role;
+        if (role !== 3) { // not Administrator
+            context.currentRecord.getField({ fieldId: 'memo' }).isDisabled = true;
+        }
+    }
+
+    return { pageInit: pageInit };
+});
